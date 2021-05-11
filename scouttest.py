@@ -45,7 +45,6 @@ def create_flag_columns(df_expanded,missing_VTWS,missing_TS):
     timezone_flag = []
     vtws_flag = []
     for index, row in df_expanded.iterrows():
-        print(row['id'])
         if row['id'] in missing_TS:
             timezone_flag.append('missing from original')
             vtws_flag.append('Erroneous')
@@ -67,7 +66,6 @@ def create_flag_columns(df_expanded,missing_VTWS,missing_TS):
 #returns new dataframe and also exports dataframe as csv file to current path
 def check_results(df):
     df_expanded = fill_timestamps(df)
-    print(df_expanded)
     missing_VTWS = locate_missing_VTWS(df)
     missing_TS = locate_missing_timestamps(df_expanded)
     df_final = create_flag_columns(df_expanded,missing_VTWS,missing_TS)
